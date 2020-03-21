@@ -5,9 +5,7 @@ Created on Sat Mar 21 13:00:55 2020
 @author: SaiPr
 """
 
-import split_folders
 
-split_folders.ratio('D:/spyder file/Binary Face classifier/Pos',output="D:/spyder file/Binary Face classifier/Test2",seed = 1337 ,ratio = (0.8,0.2))
 
 
 from keras.models import Sequential 
@@ -19,7 +17,7 @@ from keras.layers import Dense
 classifier = Sequential()
 #building the model 
 classifier.add(Convolution2D(32,3,3,input_shape = (64,64,3),activation = 'relu'))
-# 32 is number of feature maps , 3,3 is the size of feature detector , we give input size of our image
+# 64 is number of feature maps , 3,3 is the size of feature detector , we give input size of our image as input
 classifier.add(Convolution2D(16,3,3,input_shape = (64,64,3),activation = 'relu'))
 classifier.add(MaxPooling2D(pool_size = (2,2)) )
 classifier.add(Flatten())
@@ -29,7 +27,7 @@ classifier.add(Dense(output_dim = 1, activation = 'sigmoid'))
 #compile the model 
 
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy',metrics=['accuracy'])
-#adam is like gradient desecnt where loss function is logisitic thing
+#adam is like gradient desecnt where loss function is logisitic 
 
 from keras.preprocessing.image import ImageDataGenerator 
 
